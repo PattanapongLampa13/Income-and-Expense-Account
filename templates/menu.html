@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="menu-container-cyberpunk">
+    <h1>เมนูหลัก</h1>
+    <ul class="menu-list-cyberpunk">
+        <li><a href="/add-income"><span>บันทึกรายรับ</span></a></li>
+        <li><a href="/add-expense"><span>บันทึกรายจ่าย</span></a></li>
+        <li><a href="/summary"><span>สรุปยอดรายรับ-รายจ่าย</span></a></li>
+    </ul>
+</div>
+{% endblock %}
+<style>
+    body {
+        background: linear-gradient(135deg, #0f2027 0%, #2c5364 100%);
+        min-height: 100vh;
+        font-family: 'Orbitron', 'Kanit', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        letter-spacing: 1px;
+    }
+    .menu-container-cyberpunk {
+        max-width: 420px;
+        margin: 80px auto;
+        background: rgba(24, 24, 36, 0.95);
+        border-radius: 18px;
+        box-shadow: 0 0 32px 4px #00ffe7, 0 0 0 4px #ff00c8 inset;
+        padding: 38px 28px 32px 28px;
+        border: 2px solid #ff00c8;
+        position: relative;
+        z-index: 1;
+    }
+    .menu-container-cyberpunk::before {
+        content: '';
+        position: absolute;
+        top: -10px; left: -10px; right: -10px; bottom: -10px;
+        border-radius: 22px;
+        background: linear-gradient(90deg, #ff00c8 0%, #00ffe7 100%);
+        filter: blur(18px);
+        opacity: 0.4;
+        z-index: -1;
+    }
+    .menu-container-cyberpunk h1 {
+        text-align: center;
+        color: #00ffe7;
+        font-size: 2.2em;
+        text-shadow: 0 0 12px #ff00c8, 0 0 24px #00ffe7;
+        margin-bottom: 36px;
+        font-family: 'Orbitron', 'Kanit', sans-serif;
+        letter-spacing: 2px;
+    }
+    .menu-list-cyberpunk {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .menu-list-cyberpunk li {
+        margin-bottom: 26px;
+    }
+    .menu-list-cyberpunk li:last-child {
+        margin-bottom: 0;
+    }
+    .menu-list-cyberpunk a {
+        display: block;
+        text-decoration: none;
+        color: #fff;
+        font-size: 1.18em;
+        font-family: 'Orbitron', 'Kanit', sans-serif;
+        padding: 16px 0;
+        border-radius: 8px;
+        background: linear-gradient(90deg, #ff00c8 0%, #00ffe7 100%);
+        box-shadow: 0 0 16px #00ffe7, 0 0 8px #ff00c8 inset;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.15s, box-shadow 0.15s;
+        font-weight: bold;
+        letter-spacing: 1.5px;
+    }
+    .menu-list-cyberpunk a span {
+        position: relative;
+        z-index: 2;
+        text-shadow: 0 0 8px #00ffe7, 0 0 4px #ff00c8;
+    }
+    .menu-list-cyberpunk a::before {
+        content: '';
+        position: absolute;
+        top: 0; left: -75%;
+        width: 50%; height: 100%;
+        background: rgba(255,255,255,0.18);
+        transform: skewX(-25deg);
+        transition: left 0.3s;
+        z-index: 1;
+    }
+    .menu-list-cyberpunk a:hover {
+        transform: scale(1.04) rotate(-1deg);
+        box-shadow: 0 0 32px #ff00c8, 0 0 24px #00ffe7 inset;
+        background: linear-gradient(90deg, #00ffe7 0%, #ff00c8 100%);
+    }
+    .menu-list-cyberpunk a:hover::before {
+        left: 110%;
+    }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Kanit:wght@500&display=swap" rel=

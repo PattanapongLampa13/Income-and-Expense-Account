@@ -1,13 +1,10 @@
 from django.contrib import admin
 from django.urls import path
-from . import views
+from bank import views
 
 urlpatterns = [
-<<<<<<< HEAD
-   
-=======
-    path('', views.base, name='base'),
-    path('home/', views.home, name='home'),
+    path('', views.menu, name='menu'),  # หน้าแรก
     path('menu/', views.menu, name='menu'),
->>>>>>> feature-menu
+    path('home/', views.home, name='home'),
+    path('login/', views.login_view, name='login'),
 ]
