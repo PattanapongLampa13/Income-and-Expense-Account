@@ -3,5 +3,11 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+<<<<<<< HEAD
    
+=======
+    path('', views.base, name='base'),
+    path('home/', views.home, name='home'),
+    path('menu/', views.menu, name='menu'),
+>>>>>>> feature-menu
 ]
