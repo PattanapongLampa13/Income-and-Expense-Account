@@ -2,9 +2,11 @@
 from django.shortcuts import render
 
 # views.py
+
 from django.shortcuts import render, redirect  # render และ redirect
 from django.contrib.auth import authenticate, login  # authenticate, login
 from django.contrib import messages  # messages
+from django.contrib.auth.decorators import login_required
 
 
 def base(request):
@@ -18,6 +20,7 @@ def menu(request):
 	return render(request, 'menu.html')
 
 
+@login_required
 def digitolsum_view(request):
     if request.method == "POST":
         items = []
@@ -51,6 +54,7 @@ def digitolsum_view(request):
         })
     return render(request, 'digitolsum.html')
 
+@login_required
 def slip_view(request):
     # ถ้าเข้าตรงๆ ไม่ผ่าน POST ให้แสดง slip.html ว่าง
     return render(request, 'slip.html')
@@ -66,3 +70,24 @@ def login_view(request):
         else:
             messages.error(request, "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง")
     return render(request, 'account/login.html')
+
+
+def register_view(request):
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password1 = request.POST.get('password1')
+        password2 = request.POST.get('password2')
+        if password1 != password2:
+            messages.error(request, "รหัสผ่านไม่ตรงกัน")
+            return render(request, 'account/register.html')
+        if not username or not password1:
+            messages.error(request, "กรุณากรอกข้อมูลให้ครบถ้วน")
+            return render(request, 'account/register.html')
+        from django.contrib.auth.models import User
+        if User.objects.filter(username=username).exists():
+            messages.error(request, "ชื่อผู้ใช้นี้มีอยู่แล้ว")
+            return render(request, 'account/register.html')
+        user = User.objects.create_user(username=username, password=password1)
+        login(request, user)
+        return redirect('home')
+    return render(request, 'account/register.html')
