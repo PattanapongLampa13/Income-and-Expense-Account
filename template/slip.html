@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}สรุปยอดรายรับ-รายจ่าย{% endblock %}
+
+{% block content %}
+<div class="slip-container">
+    <h2>สรุปยอดรายรับ-รายจ่าย</h2>
+    {% if items %}
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>รายการ</th>
+                    <th>ประเภท</th>
+                    <th>จำนวนเงิน (บาท)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                <tr>
+                    <td>{{ item.item }}</td>
+                    <td>{{ item.type|title }}</td>
+                    <td>{{ item.amount }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div>
+            <strong>รวมรายรับ:</strong> {{ total_income }} บาท<br>
+            <strong>รวมรายจ่าย:</strong> {{ total_expense }} บาท<br>
+            <strong>คงเหลือ:</strong> {{ balance }} บาท
+        </div>
+    {% else %}
+        <p>ยังไม่มีข้อมูลสรุป กรุณากรอกข้อมูลที่หน้า <a href="{% url 'digitolsum' %}">คำนวณรายรับรายจ่าย</a></p>
+    {% endif %}
+</div>
+{% endblock %}
