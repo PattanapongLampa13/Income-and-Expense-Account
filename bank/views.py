@@ -1,15 +1,6 @@
 
 from django.shortcuts import render
 
-<<<<<<< HEAD
-# views.py
-from django.shortcuts import render, redirect  # render และ redirect
-from django.contrib.auth import authenticate, login  # authenticate, login
-from django.contrib import messages  # messages
-
-
-=======
->>>>>>> feature-menu
 def base(request):
 	return render(request, 'base.html')
 
