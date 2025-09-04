@@ -117,7 +117,17 @@ USE_TZ = True
 STATIC_URL = "static/"
 
 # Redirect to login page if not authenticated
-LOGIN_URL = '/login/'
+LOGIN_URL = 'login'
+
+# filepath: c:\Users\user\Programming\WorkingSpace\PupWork\Income-and-Expense-Account\settings.py
+LOGIN_REDIRECT_URL = 'home'  # หรือชื่อ url ที่ต้องการ
+
+# ตั้งค่า session ให้หมดอายุเมื่อปิด browser
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+
+# ตั้งเวลา session หมดอายุ (เช่น 30 นาที)
+SESSION_COOKIE_AGE = 1800  # วินาที (30 นาที)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
