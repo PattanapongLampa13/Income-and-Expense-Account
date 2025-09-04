@@ -127,7 +127,7 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 
 # ตั้งเวลา session หมดอายุ (เช่น 30 นาที)
-SESSION_COOKIE_AGE = 1800  # วินาที (30 นาที)
+SESSION_COOKIE_AGE = 60  # วินาที (30 นาที)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
