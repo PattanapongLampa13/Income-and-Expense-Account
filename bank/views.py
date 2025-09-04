@@ -8,6 +8,12 @@ from django.contrib.auth import authenticate, login  # authenticate, login
 from django.contrib import messages  # messages
 from django.contrib.auth.decorators import login_required
 
+
+from .models import IncomeExpense
+from .forms import IncomeExpenseForm
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
+
 @login_required(login_url='login')
 def base(request):
 	return render(request, 'base.html')
@@ -87,3 +93,34 @@ def register_view(request):
     else:
         form = UserCreationForm()
     return render(request, 'account/register.html', {'form': form})
+
+# ...existing code...
+
+@login_required(login_url='login')
+def income_expense_view(request):
+    user = request.user
+
+    if request.method == 'POST':
+        form = IncomeExpenseForm(request.POST)
+        if form.is_valid():
+            transaction = form.save(commit=False)
+            transaction.user = user
+            transaction.save()
+            return redirect('income_expense')
+    else:
+        form = IncomeExpenseForm()
+
+    # ดึง transaction ของผู้ใช้คนนี้
+    records = IncomeExpense.objects.filter(user=user).order_by('-date')
+    total_income = sum(t.amount for t in records if t.transaction_type == 'income')
+    total_expense = sum(t.amount for t in records if t.transaction_type == 'expense')
+
+    context = {
+        'form': form,
+        'records': records,
+        'total_income': total_income,
+        'total_expense': total_expense,
+    }
+    return render(request, 'income_expense.html', context)
+
+# ...existing code...

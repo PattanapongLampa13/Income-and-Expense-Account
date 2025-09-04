@@ -10,4 +10,5 @@ urlpatterns = [
     path('slip/', views.slip_view, name='slip'),
     path('digitolsum/', views.digitolsum_view, name='digitolsum'),
     path('register/', views.register_view, name='register'),
+    path('income-expense/', views.income_expense_view, name='income_expense'),  # เพิ่มเส้นทางใหม่
 ]
