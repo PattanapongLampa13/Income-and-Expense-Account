@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from . import views
+from bank import views
 
 urlpatterns = [
     path('', views.login_view, name='login'),  # หน้าแรกเป็น login
@@ -10,4 +10,5 @@ urlpatterns = [
     path('slip/', views.slip_view, name='slip'),
     path('digitolsum/', views.digitolsum_view, name='digitolsum'),
     path('register/', views.register_view, name='register'),
+    path('income-expense/', views.income_expense_view, name='income_expense'),  # เพิ่มเส้นทางใหม่
 ]
