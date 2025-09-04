@@ -110,7 +110,7 @@
     <nav>
         <ul>
             <li><a href="{% url 'home' %}">หน้าหลัก</a></li>
-            <li><a href="{% url 'menu' %}">เมนู</a></li>
+            {% comment %} <li><a href="{% url 'menu' %}">เมนู</a></li> {% endcomment %}
             {% comment %} <li><a href="{% url 'digitolsum' %}">บันทึกรายรับรายจ่าย</a></li>
             <li><a href="{% url 'slip' %}">สรุปยอดรายรับ-รายจ่าย</a></li> {% endcomment %}
             <li><a href="{% url 'income_expense' %}">รายรับ-รายจ่าย</a></li>
