@@ -2,20 +2,15 @@
 {% extends 'base.html' %}
 {% block title %}เมนู{% endblock %}
 {% block content %}
-<h2>เมนูหลัก</h2>
-{% endblock %}
-=======
-{% extends "base.html" %}
-{% block content %}
 <div class="menu-container-cyberpunk">
     <h1>เมนูหลัก</h1>
     <ul class="menu-list-cyberpunk">
-        <li><a href="/add-income"><span>บันทึกรายรับ</span></a></li>
-        <li><a href="/add-expense"><span>บันทึกรายจ่าย</span></a></li>
-        <li><a href="/summary"><span>สรุปยอดรายรับ-รายจ่าย</span></a></li>
+        <li><a href="{% url 'digitolsum' %}"><span>คำนวณรายรับ-รายจ่าย</span></a></li>
+        <li><a href="{% url 'income_expense' %}"><span>บันทึกรายรับ-รายจ่าย</span></a></li>
+        <li><a href="{% url 'slip' %}"><span>ใบเสร็จรายรับ-รายจ่าย</span></a></li>
     </ul>
 </div>
-{% endblock %}
+
 <style>
     body {
         background: linear-gradient(135deg, #0f2027 0%, #2c5364 100%);
@@ -105,5 +100,6 @@
         left: 110%;
     }
 </style>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Kanit:wght@500&display=swap" rel=
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Kanit:wght@500&display=swap" rel="stylesheet">
 
+{% endblock %}
