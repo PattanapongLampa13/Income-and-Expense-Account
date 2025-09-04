@@ -15,7 +15,6 @@
         min-height: 100vh;
         letter-spacing: 0.5px;
     }
-
     /* Header */
     header {
         background: linear-gradient(135deg, #d4b483 0%, #a67843 100%);
@@ -28,21 +27,18 @@
         border-radius: 0 0 15px 15px;
         position: relative;
     }
-
     header h1 {
         font-size: 2em;
         font-weight: 700;
         color: #2f1f1f;
         text-shadow: 1px 1px 0 #e6d7b8;
     }
-
     /* Navigation */
     nav ul {
         display: flex;
         list-style: none;
         gap: 1rem;
     }
-
     nav a {
         text-decoration: none;
         padding: 0.6rem 1.5rem;
@@ -54,14 +50,12 @@
         transition: 0.3s ease-in-out;
         position: relative;
     }
-
     nav a:hover {
         background: linear-gradient(135deg, #d4b483 0%, #a67843 100%);
         box-shadow: 0 4px 6px rgba(0,0,0,0.4), inset 0 0 4px rgba(255, 255, 255, 0.3);
         transform: translateY(-2px);
         color: #fffaf0;
     }
-
     /* Main content */
     main {
         max-width: 1000px;
@@ -73,8 +67,6 @@
         position: relative;
         overflow: hidden;
     }
-
-    /* Gears / mechanical decoration */
     main::before, main::after {
         content: "⚙";
         position: absolute;
@@ -85,7 +77,6 @@
     }
     main::before { top: 10px; left: 10px; }
     main::after { bottom: 20px; right: 20px; }
-
     /* Footer */
     footer {
         background: linear-gradient(135deg, #d4b483 0%, #a67843 100%);
@@ -113,7 +104,6 @@
             <li><a href="{% url 'menu' %}">เมนู</a></li>
             <li><a href="{% url 'digitolsum' %}">บันทึกรายรับรายจ่าย</a></li>
             <li><a href="{% url 'slip' %}">สรุปยอดรายรับ-รายจ่าย</a></li>
-
             <!-- ปุ่ม Login -->
             <a href="{% url 'login' %}" style="
                     padding: 0.5rem 1rem;

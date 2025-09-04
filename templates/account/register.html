@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}สมัครสมาชิก{% endblock %}
+{% block content %}
+<div style="max-width: 400px; margin: 3rem auto; padding: 2rem; background: #fff; border-radius: 8px; box-shadow: 0 0 12px rgba(0,0,0,0.1);">
+	<h2 style="text-align:center; margin-bottom:1.5rem;">สมัครสมาชิก</h2>
+	<form method="post">
+		{% csrf_token %}
+		<div style="margin-bottom:1rem;">
+			<label for="username">ชื่อผู้ใช้</label>
+			<input type="text" name="username" id="username" class="form-control" required style="width:100%; padding:0.5rem; margin-top:0.3rem;">
+		</div>
+		<div style="margin-bottom:1.5rem;">
+			<label for="password1">รหัสผ่าน</label>
+			<input type="password" name="password1" id="password1" class="form-control" required style="width:100%; padding:0.5rem; margin-top:0.3rem;">
+		</div>
+		<div style="margin-bottom:1.5rem;">
+			<label for="password2">ยืนยันรหัสผ่าน</label>
+			<input type="password" name="password2" id="password2" class="form-control" required style="width:100%; padding:0.5rem; margin-top:0.3rem;">
+		</div>
+		<button type="submit" style="width:100%; padding:0.7rem; background:#4CAF50; color:white; border:none; border-radius:4px;">สมัครสมาชิก</button>
+		</form>
+		<div style="text-align:center; margin-top:1rem;">
+			<a href="/login/">เข้าสู่ระบบ</a>
+		</div>
+	</div>
+{% endblock %}
