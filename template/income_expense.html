@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Income & Expense Tracker</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+	<style>
+		body {
+			font-family: 'Montserrat', Arial, sans-serif;
+			background: linear-gradient(120deg, #18181f 0%, #23232b 100%);
+			min-height: 100vh;
+			margin: 0;
+			padding: 0;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			overflow-x: hidden;
+			color: #f5f5f7;
+		}
+		.floating-baht {
+			position: fixed;
+			z-index: 0;
+			color: #2ecc71;
+			opacity: 0.08;
+			font-size: 5rem;
+			animation: float 12s infinite linear;
+		}
+		.floating-baht.b1 { left: 10vw; top: 12vh; font-size: 7rem; animation-delay: 0s; }
+		.floating-baht.b2 { left: 70vw; top: 18vh; font-size: 4.5rem; animation-delay: 2s; }
+		.floating-baht.b3 { left: 30vw; top: 70vh; font-size: 6rem; animation-delay: 4s; }
+		.floating-baht.b4 { left: 80vw; top: 60vh; font-size: 5.5rem; animation-delay: 6s; }
+		.floating-baht.b5 { left: 50vw; top: 40vh; font-size: 8rem; animation-delay: 8s; }
+		@keyframes float {
+			0% { transform: translateY(0) rotate(0deg); }
+			100% { transform: translateY(-40px) rotate(360deg); }
+		}
+		.container {
+			background: rgba(24, 24, 31, 0.98);
+			border-radius: 18px;
+			box-shadow: 0 8px 32px 0 rgba(0,0,0,0.45);
+			padding: 40px 32px 32px 32px;
+			margin-top: 60px;
+			width: 100%;
+			max-width: 520px;
+			z-index: 1;
+			color: #f5f5f7;
+		}
+		h1 {
+			text-align: center;
+			color: #1db954;
+			font-size: 2.5rem;
+			margin-bottom: 32px;
+			letter-spacing: 2px;
+			font-weight: 800;
+			text-shadow: 0 2px 8px #000a;
+		}
+		form {
+			display: flex;
+			gap: 12px;
+			margin-bottom: 28px;
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+		form input, form select {
+			padding: 10px 14px;
+			border: 1px solid #23232b;
+			background: #23232b;
+			color: #f5f5f7;
+			border-radius: 8px;
+			font-size: 1rem;
+			outline: none;
+			transition: border 0.2s, background 0.2s;
+			font-weight: 600;
+		}
+		form input:focus, form select:focus {
+			border: 1.5px solid #1db954;
+			background: #18181f;
+			color: #fff;
+		}
+		form button {
+			background: linear-gradient(90deg, #1db954 0%, #23232b 100%);
+			color: #fff;
+			border: none;
+			border-radius: 8px;
+			padding: 10px 22px;
+			font-size: 1rem;
+			font-weight: 700;
+			cursor: pointer;
+			transition: background 0.2s, transform 0.2s;
+			box-shadow: 0 2px 8px rgba(29,185,84,0.12);
+		}
+		form button:hover {
+			background: linear-gradient(90deg, #23232b 0%, #1db954 100%);
+			transform: translateY(-2px) scale(1.04);
+		}
+		.totals {
+			display: flex;
+			justify-content: space-between;
+			background: #23232b;
+			border-radius: 10px;
+			padding: 16px 20px;
+			margin-bottom: 24px;
+			font-size: 1.1rem;
+			box-shadow: 0 2px 8px rgba(29,185,84,0.07);
+			color: #f5f5f7;
+			font-weight: 600;
+		}
+		.income {
+			color: #1db954;
+			font-weight: 700;
+		}
+		.expense {
+			color: #e74c3c;
+			font-weight: 700;
+		}
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			background: #18181f;
+			border-radius: 12px;
+			overflow: hidden;
+			box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+		}
+		th, td {
+			padding: 12px 10px;
+			text-align: left;
+			color: #f5f5f7;
+		}
+		th {
+			background: #23232b;
+			color: #1db954;
+			font-size: 1.08rem;
+			border-bottom: 2px solid #1db95433;
+			font-weight: 700;
+		}
+		tr:nth-child(even) {
+			background: #23232b;
+		}
+		tr:hover {
+			background: #1db95422;
+			transition: background 0.2s;
+		}
+		td.income {
+			color: #1db954;
+			font-weight: 700;
+		}
+		td.expense {
+			color: #e74c3c;
+			font-weight: 700;
+		}
+		@media (max-width: 600px) {
+			.container {
+				padding: 18px 4px;
+			}
+			h1 {
+				font-size: 1.5rem;
+			}
+			.totals {
+				flex-direction: column;
+				gap: 6px;
+				font-size: 1rem;
+			}
+			th, td {
+				padding: 8px 4px;
+				color: #f5f5f7;
+			}
+		}
+	</style>
+</head>
+<body>
+	<!-- Floating Baht Icons -->
+	<i class="fa-solid fa-b faht floating-baht b1"></i>
+	<i class="fa-solid fa-b faht floating-baht b2"></i>
+	<i class="fa-solid fa-b faht floating-baht b3"></i>
+	<i class="fa-solid fa-b faht floating-baht b4"></i>
+	<i class="fa-solid fa-b faht floating-baht b5"></i>
+	<div class="container">
+		<h1>Income & Expense Tracker</h1>
+		<form method="post">
+			{% csrf_token %}
+			<input type="text" name="title" placeholder="Title" required>
+			<input type="number" step="0.01" name="amount" placeholder="Amount" required>
+			<select name="transaction_type" required>
+				<option value="income">Income</option>
+				<option value="expense">Expense</option>
+			</select>
+			<button type="submit">Add</button>
+		</form>
+		<div class="totals">
+			<div><strong>Total Income:</strong> <span class="income">฿{{ total_income }}</span></div>
+			<div><strong>Total Expense:</strong> <span class="expense">฿{{ total_expense }}</span></div>
+		</div>
+		<table>
+			<thead>
+				<tr>
+					<th>Date</th>
+					<th>Title</th>
+					<th>Type</th>
+					<th>Amount</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for record in records %}
+				<tr>
+					<td>{{ record.date }}</td>
+					<td>{{ record.title }}</td>
+					<td class="{{ record.transaction_type }}">{{ record.get_transaction_type_display }}</td>
+					<td class="{{ record.transaction_type }}">฿{{ record.amount }}</td>
+				</tr>
+				{% empty %}
+				<tr><td colspan="4" style="text-align:center; color:#aaa;">No records yet.</td></tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
