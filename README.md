@@ -5,7 +5,7 @@
 เหมาะสำหรับการเก็บบันทึกการเงินส่วนตัวแบบง่ายๆ
 
 ## 🌐 Demo
-ลองใช้งานตัวDemoได้ที่: [Income & Expense Tracker Demo] https://otop-sells.vercel.app/
+ลองใช้งานตัวDemoได้ที่: [Income & Expense Tracker Demo]
 
 
 ## 📠 Features
